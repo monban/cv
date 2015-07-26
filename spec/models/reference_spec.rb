@@ -3,11 +3,10 @@ require 'rails_helper'
 RSpec.describe Reference, type: :model do
   context "with an otherwise valid reference" do
     before :each do
-      @ref = Reference.new(
-        name: 'John Doe',
-        telephone: '+1(555)123-4567',
-        endorsement: 'foo'
-      )
+      @ref = FactoryGirl.build(:reference)
+    end
+    it "has a valid default factory" do
+      expect(@ref).to be_valid
     end
     it "is invalid without a telephone number" do
       @ref.telephone = ''
