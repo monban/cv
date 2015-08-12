@@ -46,5 +46,8 @@ group :development, :test do
   # Faker and Factory Girl for dynamic data
   gem 'faker', '~>1.4'
   gem 'factory_girl_rails', '~>4.5'
+
+  # rack-test for testing Rack applications
+  gem 'rack-test', '~>0.6'
 end
 
