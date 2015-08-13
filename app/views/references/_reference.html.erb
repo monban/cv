@@ -1,8 +1,12 @@
 <h3><%= reference.name %></h3>
 <h4><%= reference.relationship %></h4>
 <p>
+<% if Token.current %>
 Phone: <span itemprop="telephone"><a href="tel:<%= reference.telephone %>">
         <%= reference.telephone %></a>
 Email: <a href="mailto:<%= reference.email %>"><%= reference.email %></a>
+<% else %>
+    Contact information for references is available on request.
+<% end %>
 </p>
 <p><%= reference.endorsement %></p>
