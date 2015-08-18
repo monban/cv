@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805045123) do
+ActiveRecord::Schema.define(version: 20150816170157) do
 
   create_table "references", force: :cascade do |t|
     t.string   "name"
@@ -34,8 +34,9 @@ ActiveRecord::Schema.define(version: 20150805045123) do
     t.string   "key"
     t.datetime "expires_at"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "admin",      default: false
   end
 
   add_index "tokens", ["key"], name: "index_tokens_on_key"
