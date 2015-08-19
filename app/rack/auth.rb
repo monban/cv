@@ -5,8 +5,13 @@ class Auth
 
   def call(env)
     req = Rack::Request.new(env)
-    Token.set_current(req.params['token'])
-    Rails.logger.debug req.params
+    if key = req.params['token']
+      if token = Token.find_by(key: key)
+        Session.new(req.session).current_token = token
+      else
+        Session.new(req.session).current_token = nil
+      end
+    end
     @app.call(env)
   end
 end
