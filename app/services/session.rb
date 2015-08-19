@@ -14,4 +14,8 @@ class Session
       @session['token_id'] = token.id
     end
   end
+
+  def admin?
+    current_token.admin
+  end
 end
