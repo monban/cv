@@ -8,6 +8,10 @@ class Session
   end
 
   def current_token=(token)
-    @session['token_id'] = token.id
+    if token.nil?
+      @session['token_id'] = nil
+    else
+      @session['token_id'] = token.id
+    end
   end
 end

@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe Session do
   let(:token) { FactoryGirl.create(:token) }
 
@@ -6,6 +8,14 @@ describe Session do
     it 'finds the current token' do
       expect(Session.new(session).current_token).
         to eq(token)
+    end
+    context 'with an empty key' do
+      let(:key) { '' }
+      it 'sets the current token to nil' do
+        expect{Session.new(session).current_token = nil}.
+          to change{session['token_id']}.from(token.id).
+          to(nil)
+      end
     end
   end
 
