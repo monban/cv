@@ -6,12 +6,6 @@ describe 'token middleware', :type => :request do
   context 'with a valid key' do
     let(:key) { token.key  }
 
-    it 'finds the correct token' do
-      get '/', {token: key}
-      expect(Token.current).to eq(token)
-    end
-
-
     context 'with a reference' do
       let!(:reference) { FactoryGirl.create(:reference) }
 
@@ -25,10 +19,6 @@ describe 'token middleware', :type => :request do
   context 'when incorrect key' do
     let(:key) { token.key + 'foo' }
 
-    it 'returns nil' do
-      get '/', {token: key + 'foo'}
-      expect(Token.current).to be_nil
-    end
     context 'with a reference' do
       let!(:reference) { FactoryGirl.create(:reference) }
 
@@ -40,11 +30,6 @@ describe 'token middleware', :type => :request do
 end
 
 context 'when no key' do
-    it 'returns nil' do
-      get '/'
-      expect(Token.current).to be_nil
-    end
-
     context 'with a reference' do
       let!(:reference) { FactoryGirl.create(:reference) }
 
