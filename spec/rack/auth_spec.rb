@@ -8,7 +8,6 @@ class MockApp
   end
   def call(env)
     @request = Rack::Request.new(env)
-    puts @request
     [ 200, {'Content-Type' => 'text/plain'}, []]
   end
 end
