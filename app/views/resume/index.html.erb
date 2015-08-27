@@ -1,3 +1,6 @@
+<% if admin? %>
+	<%= render partial: 'application/admin_controls' %>
+<% end %>
 <%= render @sections %>
 <h2>References</h2>
 <%= render @references %>
