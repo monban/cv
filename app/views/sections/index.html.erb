@@ -1,4 +1,5 @@
 <% for section in @sections %>
 	<h3><%= section.title %></h3>
-	<p><%= section.content.truncate %></p>
+	<p><%= section.content.truncate(30) %></p>
+	<p><%= link_to 'Edit', edit_section_path(section) %></p>
 <% end %>
