@@ -1,0 +1,10 @@
+<h3>Editing section <%= @section.title %></h3>
+<%= form_for @section do |f| %>
+	<p><%= f.label :title %><br />
+	<%= f.text_field :title %>
+	</p>
+	<p><%= f.label :content %><br />
+	<%= f.text_area :content, size: '30x10' %>
+	</p>
+	<p><%= f.submit 'Save' %></p>
+<% end %>
