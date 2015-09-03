@@ -8,6 +8,7 @@ RSpec.describe "resume/index", type: :view do
     assign(:sections, FactoryGirl.create_list(:section, 3))
     assign(:references, FactoryGirl.create_list(:reference, 3))
     allow(view).to receive(:current_token).and_return(FactoryGirl.build(:token))
+    allow(view).to receive(:admin?).and_return(true)
   end
   after(:each) do
     RSpec::Mocks.configuration.verify_partial_doubles = true
