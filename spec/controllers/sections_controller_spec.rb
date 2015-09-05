@@ -3,11 +3,11 @@ require 'controllers/support/admin_only'
 
 RSpec.describe SectionsController, type: :controller do
   describe '#index' do
-  it_behaves_like "an admin controller"
+    it_behaves_like "an admin controller"
     context 'admin logged in' do
       before(:each) do
         RSpec::Mocks.configuration.verify_partial_doubles = false
-       allow(controller).to receive(:admin?).and_return(true) 
+        allow(controller).to receive(:admin?).and_return(true) 
       end
       after(:each) do
         RSpec::Mocks.configuration.verify_partial_doubles = true
