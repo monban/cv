@@ -23,14 +23,14 @@ RSpec.shared_examples "an admin controller" do
   end
   context "without anyone logged in" do
     before(:each) do
-      allow(described_class).to receive(:admin?).and_return(false)
+      allow(subject).to receive(:admin?).and_return(false)
     end
     it_behaves_like "forbids get", :index
     it_behaves_like "forbids get", :new
   end
   context "with admin logged in" do
     before(:each) do
-      allow(described_class).to receive(:admin?).and_return(true)
+      allow(subject).to receive(:admin?).and_return(true)
     end
     it_behaves_like "allows get", :index
   end
