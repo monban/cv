@@ -20,7 +20,7 @@ class SectionsController < ApplicationController
   def update
     @section = Section.find(params[:id])
     @section.update(section_params)
-    redirect_to section_path(@section)
+    redirect_to resume_path
   end
 
   protected

@@ -20,10 +20,18 @@ RSpec.describe SectionsController, type: :controller do
     end
     describe '#update' do
       let(:section) { sections.first }
+      def put_modified_section
+        put(:update, id: section.id, section: {title: section.title.reverse})
+      end
+
       it 'updates the object' do
-        expect {put(:update, id: section.id, section: {title: section.title.reverse})}.
+        expect {put_modified_section}.
           to change{section.reload.title}.
           from(section.title).to(section.title.reverse)
+      end
+      describe 'redirects to resume' do
+        before(:example) { put_modified_section }
+        it { expect(response).to redirect_to(resume_path) }
       end
     end
   end
