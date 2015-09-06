@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'controllers/support/admin_only'
 
 RSpec.describe SectionsController, type: :controller do
-  it_behaves_like "an admin controller"
+  it_behaves_like "an admin controller", verify_partial_doubles: false
   context 'admin logged in' do
     let(:sections) { [FactoryGirl.create(:section)] }
     before(:each) do
