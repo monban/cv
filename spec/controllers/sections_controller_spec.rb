@@ -9,10 +9,6 @@ RSpec.describe SectionsController, type: :controller do
       allow(subject).to receive(:admin?).and_return(true) 
     end
 
-    describe '#index' do
-      before { get :index }
-      it { expect(assigns(:sections)).to eq(sections) }
-    end
     describe '#edit' do
       let(:section) { sections.first }
       before(:example) { get :edit, id: section.id }

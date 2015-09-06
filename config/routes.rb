@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'resume#index', as: 'resume'
-  resources 'sections'
+  resources 'sections', except: [:index]
   resources 'references'
 
   # Example of regular route:

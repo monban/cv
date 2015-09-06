@@ -25,10 +25,6 @@ RSpec.describe "resume/index", type: :view do
   context 'admin logged in' do
     before(:each) do
       allow(view).to receive(:current_token).and_return(FactoryGirl.build(:admin_token))
-      end
-     it 'renders the admin controls' do
-       render
-     expect(view).to render_template('_admin_controls')
-   end
+    end
   end
 end
