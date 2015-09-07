@@ -6,4 +6,11 @@ module ReferencesHelper
       ''
     end
   end
+  def delete_reference_link(reference)
+    if admin?
+      link_to 'Delete reference', reference, method: 'delete'
+    else
+      ''
+    end
+  end
 end
