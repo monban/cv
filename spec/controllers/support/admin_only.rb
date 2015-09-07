@@ -24,8 +24,8 @@ RSpec.shared_examples "an admin controller" do |model_factory|
       it { expect(response.code).to eq('403') }
     end
 
-    xdescribe '#create' do
-      before(:example) { post(:create, model_object.attributes) }
+    describe '#create' do
+      before(:example) { post(:create, model_object.to_paramater_hash) }
       it { expect(response.code).to eq('403') }
     end
 
@@ -45,10 +45,10 @@ RSpec.shared_examples "an admin controller" do |model_factory|
       it { expect(response.code).to eq('403') }
     end
 
-    xdescribe '#delete' do
+    describe '#delete' do
       before(:example) do
         model_object.save!
-        put(:delete, {id: model_object.to_param})
+        delete(:destroy, {id: model_object.to_param})
       end
       it { expect(response.code).to eq('403') }
     end
@@ -63,9 +63,9 @@ RSpec.shared_examples "an admin controller" do |model_factory|
       it { expect(response.code).to eq('200') }
     end
 
-    xdescribe '#create' do
-      before(:example) { post(:create, model_object.attributes) }
-      it { expect(response.code).to eq('200') }
+    describe '#create' do
+      before(:example) { post(:create, model_object.to_paramater_hash) }
+      it { expect(response).to redirect_to(resume_path) }
     end
 
     describe '#edit' do

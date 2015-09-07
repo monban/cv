@@ -8,6 +8,12 @@ class SectionsController < ApplicationController
   def new
     @section = Section.new
   end
+  
+  def create
+    @section = Section.new section_params
+    @section.save!
+    redirect_to resume_path
+  end
 
   def edit
     @section = Section.find params[:id] 
