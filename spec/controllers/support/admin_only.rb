@@ -1,19 +1,5 @@
 require 'rails_helper'
 
-RSpec.shared_examples "forbids get" do |action|
-  it "returns 403" do
-    get action
-    expect(response.code).to eq('403')
-  end
-end
-
-RSpec.shared_examples "allows get" do |action|
-  it "returns 200" do
-    get action
-    expect(response.code).to eq('200')
-  end
-end
-
 RSpec.shared_examples "an admin controller" do |model_factory|
   let(:model_object) { model_factory.call }
   context "when admin not logged in" do
