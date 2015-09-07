@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def require_admin
     unless admin?
-      render :status => :forbidden
+      render text: 'Forbidden', :status => :forbidden
     end
   end
 end
