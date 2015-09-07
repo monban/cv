@@ -1,4 +1,4 @@
-module Section::Mutator
+module Section::Utilities
   def mutated_attributes
     self.title = title.reverse
     self.attributes
