@@ -23,6 +23,11 @@ class SectionsController < ApplicationController
     redirect_to resume_path
   end
 
+  def destroy
+    Section.find(params[:id]).destroy
+    redirect_to resume_path
+  end
+
   protected
 
   def section_params

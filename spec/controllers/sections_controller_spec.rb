@@ -4,7 +4,7 @@ require 'controllers/support/admin_only'
 RSpec.describe SectionsController, type: :controller do
   it_behaves_like "an admin controller", verify_partial_doubles: false
   context 'admin logged in' do
-    let(:sections) { [FactoryGirl.create(:section)] }
+    let!(:sections) { [FactoryGirl.create(:section)] }
     before(:each) do
       allow(subject).to receive(:admin?).and_return(true) 
     end
@@ -27,6 +27,14 @@ RSpec.describe SectionsController, type: :controller do
       end
       describe 'redirects to resume' do
         before(:example) { put_modified_section }
+        it { expect(response).to redirect_to(resume_path) }
+      end
+    end
+    describe '#delete' do
+      let(:section) { sections.first }
+      it { expect { delete(:destroy, id: section.id) }.to change(Section, :count).by(-1) }
+      describe 'redirects to resume' do
+        before(:example) { delete(:destroy, id: section.id) }
         it { expect(response).to redirect_to(resume_path) }
       end
     end

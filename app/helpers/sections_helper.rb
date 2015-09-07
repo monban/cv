@@ -6,4 +6,11 @@ module SectionsHelper
       ''
     end
   end
+  def delete_section_link(section)
+    if admin?
+      link_to 'Delete section', section, method: 'delete'
+    else
+      ''
+    end
+  end
 end
