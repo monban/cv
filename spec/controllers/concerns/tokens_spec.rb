@@ -1,11 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Tokens do
-  class MockClass
-    attr_accessor :session
-    def self.helper_method(*foo)
+  around(:example) do |example|
+    class MockClass
+      attr_accessor :session
+      def self.helper_method(*foo)
+      end
+      include Tokens
     end
-    include Tokens
+    example.run
+    Object.send(:remove_const, :MockClass)
   end
   subject { MockClass.new }
 

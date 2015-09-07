@@ -1,13 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe SectionsHelper, type: :helper, verify_partial_doubles: false do
-  class MockClass
-    include SectionsHelper
-    def admin?
-      raise 'please override this'
+  around(:example) do |example|
+    class MockClass
+      include SectionsHelper
+      def admin?
+        raise 'please override this'
+      end
+      def link_to(*foo)
+      end
     end
-    def link_to(*foo)
-    end
+    example.run
+    Object.send(:remove_const, :MockClass)
   end
 
   subject {MockClass.new}
