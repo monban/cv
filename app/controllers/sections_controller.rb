@@ -25,12 +25,6 @@ class SectionsController < ApplicationController
 
   protected
 
-  def require_admin
-    unless admin?
-      render :status => :forbidden
-    end
-  end
-
   def section_params
     params.require(:section).permit(:title, :content)
   end
