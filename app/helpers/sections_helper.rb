@@ -13,4 +13,7 @@ module SectionsHelper
       ''
     end
   end
+  def render_section_content(section)
+    render_markdown(section.content).html_safe
+  end
 end
