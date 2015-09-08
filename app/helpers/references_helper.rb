@@ -1,5 +1,5 @@
 module ReferencesHelper
-  def edit_reference(reference)
+  def edit_reference_link(reference)
     if admin?
       link_to('Edit', edit_reference_path(reference))
     else
