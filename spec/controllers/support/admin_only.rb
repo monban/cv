@@ -31,7 +31,7 @@ RSpec.shared_examples "an admin controller" do |model_factory|
       it { expect(response.code).to eq('403') }
     end
 
-    describe '#delete' do
+    describe '#destroy' do
       before(:example) do
         model_object.save!
         delete(:destroy, {id: model_object.to_param})
@@ -61,6 +61,14 @@ RSpec.shared_examples "an admin controller" do |model_factory|
       end
       #it { expect(assigns(:section)).to eq(section) }
       it { expect(response.code).to eq('200') }
+    end
+
+    describe '#destroy' do
+      before(:example) do
+        model_object.save!
+        delete(:destroy, {id: model_object.to_param})
+      end
+      it { expect(response).to redirect_to(resume_path) }
     end
   end
 end
